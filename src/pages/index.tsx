@@ -65,7 +65,6 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
             <th>Podcast</th>
             <th>Integrantes</th>
             <th>Data</th>
-            <th></th>
             <th>Duração</th>
             <th></th>
           </thead>
@@ -82,7 +81,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                       src={episode.thumbnail}
                     />
                   </td>
-                  <td>
+                  <td style={{ paddingTop: ' 14px' }}>
                     <a href="">{episode.title}</a>
                   </td>
                   <td>{episode.members}</td>
