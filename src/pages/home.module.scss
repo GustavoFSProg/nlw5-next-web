@@ -43,6 +43,8 @@
           font-weight: 600;
           text-decoration: none;
           line-height: 1.4rem;
+          margin-left: 20px;
+          margin-top: 15px;
 
           &:hover {
             text-decoration: underline;
@@ -50,18 +52,21 @@
         }
 
         p {
-          font-size: 0.875rem;
+          font-size: 0.8rem;
+          // font-size: 0.875rem;
           margin-top: 0.5rem;
           max-width: 70%;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+          margin-left: 20px;
         }
 
         span {
           display: inline-block;
           margin-top: 0.5rem;
           font-size: 0.875rem;
+          margin-left: 20px;
 
           &:last-child {
             margin-right: 0.5rem;
@@ -120,7 +125,8 @@
     th,
     td {
       padding-left: 20px;
-      // text-align: left;
+
+      text-align: left;
       // border-bottom: 1px solid var(--gray-100);
     }
 
@@ -149,7 +155,7 @@
       font-weight: 600;
       text-decoration: none;
       line-height: 1.4rem;
-      font-size: 1rem;
+      font-size: 0.9rem;
       margin-left: -80px;
       width: 100%;
       height: 20%;
