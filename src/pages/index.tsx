@@ -64,7 +64,8 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
             <th></th>
             <th>Podcast</th>
             <th>Integrantes</th>
-            <th>Podcast</th>
+            <th>Data</th>
+            <th></th>
             <th>Duração</th>
             <th></th>
           </thead>
@@ -72,7 +73,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
             {allEpisodes.map((episode) => {
               return (
                 <tr key={episode.id}>
-                  <td style={{ paddingRight: '32px' }}>
+                  <td style={{ width: '150px' }}>
                     <Image
                       width={192}
                       height={192}
