@@ -7,12 +7,13 @@ import { ptBR } from 'date-fns/locale/pt-BR'
 import { format, parseISO } from 'date-fns'
 import { convertDurationToTimeString } from '../utils/convertDuratinToTimeString'
 import styles from './home.module.scss'
+import { ESPIPE } from 'node:constants'
 
 type Episode = {
   id: string
   title: string
   members: string
-  publishAt: Date
+  published_at: Date
   thumbnail: string
   duration: number
   durationAsString: string
@@ -44,10 +45,9 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                 <div className={styles.epidodesDetails}>
                   <a href="">{episode.title}</a>
                   <p>{episode.members}</p>
-                  <span>{episode.publishAt}</span>
+                  <span>{episode.published_at}</span>
                   <span>{episode.durationAsString}</span>
                 </div>
-
                 <button type="button">
                   <img src="/play-green.svg" alt="tocar episodio" />
                 </button>
@@ -56,9 +56,49 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
           })}
         </ul>
       </section>
-      <section className={styles.allEpisodes}></section>
+      <section className={styles.allEpisodes}>
+        <h2> Todos Episodios</h2>
 
-      {/* <p>{JSON.stringify(episodes)}</p> */}
+        <table cellSpacing="0">
+          <thead>
+            <th></th>
+            <th>Podcast</th>
+            <th>Integrantes</th>
+            <th>Podcast</th>
+            <th>Duração</th>
+            <th></th>
+          </thead>
+          <tbody>
+            {allEpisodes.map((episode) => {
+              return (
+                <tr key={episode.id}>
+                  <td style={{ paddingRight: '32px' }}>
+                    <Image
+                      width={192}
+                      height={192}
+                      alt={episode.title}
+                      objectFit="fill"
+                      src={episode.thumbnail}
+                    />
+                  </td>
+                  <td>
+                    <a href="">{episode.title}</a>
+                  </td>
+                  <td>{episode.members}</td>
+                  <td>{episode.published_at}</td>
+                  <td>{episode.durationAsString}</td>
+                  <td>
+                    {' '}
+                    <button type="button">
+                      <img src="/play-green.svg" alt="tocar episodio" />
+                    </button>
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </section>
     </div>
   )
 }
@@ -97,3 +137,7 @@ export const getStaticProps: GetStaticProps = async () => {
     revalidate: 60 * 60 * 8,
   }
 }
+
+// function published_at(published_at: any) {
+//   throw new Error('Function not implemented.')
+// }
