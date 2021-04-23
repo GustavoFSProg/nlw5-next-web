@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { ptBR } from 'date-fns/locale/pt-BR'
+import ptBR from 'date-fns/locale/pt-BR'
 import { format, parseISO } from 'date-fns'
 import { convertDurationToTimeString } from '../../utils/convertDuratinToTimeString'
 import Image from 'next/image'
@@ -25,14 +25,31 @@ type EpisodeProps = {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const { data } = await api.get('episodes', {
+    params: {
+      _limit: 2,
+      _sort: 'publish_at',
+      _order: 'desc',
+    },
+  })
+
+  const paths = data.map((episode) => {
+    return {
+      params: {
+        slug: episode.id,
+      },
+    }
+  })
+
   return {
-    paths: [],
+    paths,
     fallback: 'blocking',
   }
 }
 
-function episode({ episode }) {
+function episode({ episode }: EpisodeProps) {
   const router = useRouter()
+
   return (
     <div className={styles.episode}>
       <div className={styles.thumbnailContainer}>
