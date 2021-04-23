@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import api from '../../services/api'
 import styles from './episode.module.scss'
+import { usePlayer } from '../../contexts/PlayerContext'
 
 type Episode = {
   id: string
@@ -50,6 +51,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 function episode({ episode }: EpisodeProps) {
   const router = useRouter()
 
+  const { play } = usePlayer()
+
   return (
     <div className={styles.episode}>
       <div className={styles.thumbnailContainer}>
@@ -58,7 +61,7 @@ function episode({ episode }: EpisodeProps) {
         </button>
         <Image width={700} height={160} src={episode.thumbnail} objectFit="cover" />
 
-        <button type="button">
+        <button type="button" onClick={() => play(episode)}>
           <img src="/play.svg" alt="tocar" />
         </button>
       </div>
