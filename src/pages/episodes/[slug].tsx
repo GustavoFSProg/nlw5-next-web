@@ -8,6 +8,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import api from '../../services/api'
 import styles from './episode.module.scss'
 import { usePlayer } from '../../contexts/PlayerContext'
+import Head from 'next/head'
 
 type Episode = {
   id: string
@@ -55,6 +56,9 @@ function episode({ episode }: EpisodeProps) {
 
   return (
     <div className={styles.episode}>
+      <Head>
+        <title>{episode.title}</title>
+      </Head>
       <div className={styles.thumbnailContainer}>
         <button type="button">
           <img src="/arrow-left.svg" alt="voltar" />
