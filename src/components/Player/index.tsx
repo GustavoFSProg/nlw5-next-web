@@ -127,7 +127,7 @@ export default function Player() {
             <img src="/play-previous.svg" alt="tocar-anterior" />
           </button>
 
-          <button type="button" onClick={togglePlay}>
+          <button type="button" disabled={false} onClick={togglePlay}>
             {isPlaying ? (
               <img src="/pause.svg" className={styles.playButton} alt="parar" />
             ) : (
